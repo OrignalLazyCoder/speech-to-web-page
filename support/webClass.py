@@ -20,10 +20,24 @@ class Web :
         if not check:
            self.createFile()
         else:
-            choice = str(input(("File Already Exist. Do you want to overwrite it ? (y/n) : ")))
+            choice = str(input(("\nFile Already Exist. Do you want to overwrite it ? (y/n) : ")))
             if choice is "y":
                 self.createFile()
             elif choice is "n":
                 print("\n!--WEB DEVELOPMENT ABORTED --!\n")
             else:
                 self.checkFile()
+
+
+    def getUserSpeech(self):
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("\n > Say voice command: <")
+            audio = r.listen(source)
+        
+        try:
+            print("You said: " + r.recognize_google(audio))
+        except sr.UnknownValueError:
+            print("Google Speech Recognition could not understand audio")
+        except sr.RequestError as e:
+            print("Could not request results from Google Speech Recognition service; {0}".format(e))
