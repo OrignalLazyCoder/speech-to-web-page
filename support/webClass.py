@@ -24,7 +24,7 @@ class Web :
             if choice is "y":
                 self.createFile()
             elif choice is "n":
-                print("\n!--WEB DEVELOPMENT ABORTED --!\n")
+                print("\n!-- File left untouched --!\n")
             else:
                 self.checkFile()
 
@@ -36,7 +36,7 @@ class Web :
             audio = r.listen(source)
         
         try:
-            print("You said: " + r.recognize_google(audio))
+            print("\nYou said: " + r.recognize_google(audio))
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         except sr.RequestError as e:
